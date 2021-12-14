@@ -44,8 +44,12 @@ services:
         gelf-address: udp://localhost:12201
   elasticsearch:
     image: elasticsearch:6.8.16
+    ports:
+      - 9200:9200
   logstash:
     image: logstash:6.8.16
+    ports:
+      - 9600:9600
     command: |
       -e '
       input {
