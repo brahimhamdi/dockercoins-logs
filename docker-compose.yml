@@ -1,6 +1,7 @@
 version: "3"
 services:
   rng:
+    image: rng:4.0
     build: rng
     ports:
       - "8001:8001"
@@ -9,6 +10,7 @@ services:
       options:
         gelf-address: udp://localhost:12201
   hasher:
+    image: hasher:4.0
     build: hasher
     ports:
       - "8002:8002"
@@ -17,7 +19,8 @@ services:
       options:
         gelf-address: udp://localhost:12201
   webui:
-    build: webui
+    image: brahimhamdi/webui:2.0
+#    build: webui
     ports:
       - "8000:80"
     volumes:
@@ -33,6 +36,7 @@ services:
       options:
         gelf-address: udp://localhost:12201
   worker:
+    image: worker:4.0
     build: worker
     logging:
       driver: gelf
